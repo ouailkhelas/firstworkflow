@@ -9,7 +9,7 @@ jobs:
     # Addition
     - name: Calculate 10 + 5
       id: add
-      uses: ouailkhelas/calculator-action@main
+      uses: ouailkhelas/my-action/calculator-action@main
       with:
         number1: 10
         number2: 5
@@ -23,7 +23,7 @@ jobs:
     # Multiplication
     - name: Calculate 7 × 3
       id: multiply
-      uses: ouailkhelas/calculator-action@main
+      uses: ouailkhelas/my-action/calculator-action@main
       with:
         number1: 7
         number2: 3
@@ -33,13 +33,4 @@ jobs:
       run: |
         echo "Result: ${{ steps.multiply.outputs.result }}"
         echo "Message: ${{ steps.multiply.outputs.message }}"
-    
-    # Chain calculations
-    - name: Use results together
-      run: |
-        SUM=${{ steps.add.outputs.result }}
-        PRODUCT=${{ steps.multiply.outputs.result }}
-        TOTAL=$((SUM + PRODUCT))
-        echo "Sum (10+5) = $SUM"
-        echo "Product (7×3) = $PRODUCT"
-        echo "Total = $TOTAL"
+        

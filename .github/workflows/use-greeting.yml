@@ -1,0 +1,25 @@
+name: Use Greeting Action
+
+on: [push]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Greet Ouail in French
+      uses: ouailkhelas/my-action/greeting-action@main
+      with:
+        name: "Ouail"
+        language: "fr"
+    
+    - name: Greet Ahmed in Arabic
+      uses: ouailkhelas/my-action/greeting-action@main
+      with:
+        name: "أحمد"
+        language: "ar"
+    
+    - name: Greet John in English
+      uses: ouailkhelas/my-action/greeting-action@main
+      with:
+        name: "John"
+        language: "en"
