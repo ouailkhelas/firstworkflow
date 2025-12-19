@@ -1,0 +1,28 @@
+name: Deploy Conditionnel
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Tester
+      run: echo "Tests in progress..."
+  
+  deploy-staging:
+    needs: test
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy staging
+      run: echo "🚀 Deployment for STAGING"
+  
+  deploy-production:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy production
+      run: echo "🚀 Deployment for PRODUCTION"
