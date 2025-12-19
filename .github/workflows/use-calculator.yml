@@ -1,0 +1,45 @@
+name: Use Calculator Action
+
+on: [push]
+
+jobs:
+  calculate:
+    runs-on: ubuntu-latest
+    steps:
+    # Addition
+    - name: Calculate 10 + 5
+      id: add
+      uses: ouailkhelas/calculator-action@main
+      with:
+        number1: 10
+        number2: 5
+        operation: add
+    
+    - name: Display addition result
+      run: |
+        echo "Result: ${{ steps.add.outputs.result }}"
+        echo "Message: ${{ steps.add.outputs.message }}"
+    
+    # Multiplication
+    - name: Calculate 7 × 3
+      id: multiply
+      uses: ouailkhelas/calculator-action@main
+      with:
+        number1: 7
+        number2: 3
+        operation: multiply
+    
+    - name: Display multiplication result
+      run: |
+        echo "Result: ${{ steps.multiply.outputs.result }}"
+        echo "Message: ${{ steps.multiply.outputs.message }}"
+    
+    # Chain calculations
+    - name: Use results together
+      run: |
+        SUM=${{ steps.add.outputs.result }}
+        PRODUCT=${{ steps.multiply.outputs.result }}
+        TOTAL=$((SUM + PRODUCT))
+        echo "Sum (10+5) = $SUM"
+        echo "Product (7×3) = $PRODUCT"
+        echo "Total = $TOTAL"
